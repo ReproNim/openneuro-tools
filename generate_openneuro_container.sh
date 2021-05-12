@@ -19,14 +19,14 @@ generate() {
 	ndversion=0.7.0
 	#ndversion=master
 	docker run --rm repronim/neurodocker:$ndversion generate "$1" \
-		--base=neurodebian:buster \
+		--base=neurodebian:bullseye \
 		--ndfreeze date=${version_date}T000000Z \
 		--pkg-manager=apt \
 		--install vim wget strace time ncdu gnupg curl procps python3-datalad pigz less tree \
 				  git-annex-standalone $apt_pkgs \
 		--run "$run_cmd" \
-		--run "curl -sL https://deb.nodesource.com/setup_9.x | bash - " \
-		--install nodejs npm \
+		--run "curl -sL https://deb.nodesource.com/setup_16.x | bash - " \
+		--install nodejs \
 		--run "npm install -g bids-validator@1.7.1 openneuro-cli@3.31.1 react" \
 		--run "mkdir /afs /inbox" \
 		--user=reproin
