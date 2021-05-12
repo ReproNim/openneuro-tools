@@ -27,11 +27,11 @@ generate() {
 		--run "$run_cmd" \
 		--run "curl -sL https://deb.nodesource.com/setup_9.x | bash - " \
 		--install nodejs npm \
-		--run "npm install -g bids-validator@1.7.1 openneuro-cli@3.32.4" \
+		--run "npm install -g bids-validator@1.7.1 openneuro-cli@3.32.4 react" \
 		--run "mkdir /afs /inbox" \
 		--user=reproin
 }
 
 #version=$(git describe)
 
-generate docker > Dockerfile.openneuro-tools.${version_date}-1
+generate docker > Dockerfile.openneuro-tools.${version_date}-2
